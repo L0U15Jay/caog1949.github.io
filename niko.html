@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：黑金渐变，底部收在黑金色 ---------- */
+    /* ---------- 开头 Hero：黑金渐变 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -76,25 +76,7 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 过渡带：从 Hero 底部色 → lower-section 遮罩色 ---------- */
-    .fade-bridge {
-      height: 220px;
-      width: 100%;
-      /* 起点和 Hero 底部 #0d0a06 一致，终点接近 lower-section 的遮罩色 */
-      background: linear-gradient(
-        180deg,
-        #0d0a06 0%,
-        rgba(13, 11, 8, 0.85) 35%,
-        rgba(10, 10, 15, 0.7) 65%,
-        rgba(10, 10, 15, 0.55) 100%
-      );
-      margin-bottom: -220px;   /* 叠到下半部分顶部 */
-      position: relative;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* 下半部分：保持 Niko1PNG 背景 */
+    /* ---------- 下半部分：Niko1PNG 背景 ---------- */
     .lower-section {
       position: relative;
       width: 100%;
@@ -354,7 +336,6 @@
       .outro { padding: 4rem 1.5rem 1rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
-      .fade-bridge { height: 120px; margin-bottom: -120px; }
       .music-btn { right: 16px; bottom: 16px; width: 46px; height: 46px; font-size: 1.2rem; }
     }
   </style>
@@ -366,8 +347,6 @@
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
     <div class="scroll-down">↓</div>
   </section>
-
-  <div class="fade-bridge"></div>
 
   <div class="lower-section">
 
