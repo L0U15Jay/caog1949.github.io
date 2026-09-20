@@ -9,7 +9,10 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(145deg, #f0f4fe 0%, #e6ecf9 100%);
+      /* 背景图 + 深色遮罩，保证卡片浮在上面看得清 */
+      background:
+        linear-gradient(rgba(240, 244, 254, 0.55), rgba(230, 236, 249, 0.7)),
+        url('images/Betty-1.JPG') center/cover no-repeat fixed;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
       display: flex;
       align-items: center;
@@ -188,7 +191,7 @@
       padding-top: 1.2rem;
       border-top: 1px solid rgba(148, 163, 184, 0.2);
       font-size: 0.82rem;
-      color: #94a3b8;
+      color: #64748b;
       text-align: center;
       letter-spacing: 0.3px;
     }
@@ -231,7 +234,6 @@
       <a href="LouisJay.pdf" class="btn-pdf" download>
         <span class="icon">📄</span> 下载简历（PDF）
       </a>
-      <!-- 按钮文字已改 -->
       <a href="niko.html" class="btn-niko">
         <span class="icon">🪑</span> 真拿你没办法，坐好喽
       </a>
