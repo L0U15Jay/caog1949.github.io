@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头：Maybe not today ---------- */
+    /* ---------- 开头 Hero ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -106,7 +106,6 @@
       text-align: left;
     }
 
-    /* 时间轴圆点 */
     .timeline-item::after {
       content: '';
       position: absolute;
@@ -128,7 +127,6 @@
       left: -8px;
     }
 
-    /* 卡片 */
     .timeline-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -177,20 +175,13 @@
       border: 1px solid var(--border-color);
     }
 
-    .timeline-card .img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-    }
-
-    /* 特定节点的颜色标记 */
     .timeline-item.special-red .timeline-card { border-left: 4px solid var(--accent-red); }
     .timeline-item.special-red::after { border-color: var(--accent-red); box-shadow: 0 0 15px var(--accent-red); }
-    
+
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾：Maybe not today, maybe tomorrow ---------- */
+    /* ---------- 结尾 Outro ---------- */
     .outro {
       padding: 6rem 2rem;
       text-align: center;
@@ -199,11 +190,15 @@
     }
 
     .outro h2 {
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 900;
       color: #ffffff;
-      letter-spacing: -0.05em;
-      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .outro h2 span {
@@ -253,7 +248,7 @@
         left: 12px !important;
         right: auto !important;
       }
-      .outro h2 { font-size: 2rem; }
+      .outro h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -266,16 +261,16 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 时间轴：从 2018 到 2026 -->
+  <!-- 时间轴 -->
   <section class="timeline">
 
     <!-- 2018 波士顿 -->
     <div class="timeline-item special-red">
       <div class="timeline-card">
         <span class="year">2018 · Boston</span>
-        <h3>一步之遥的雨夜</h3>
+        <h3>三箱梦魇</h3>
         <img src="images/Niko-2018-1.JPG" alt="2018 Boston Major">
-        <p>FaZe 在 Inferno 上距离冠军只差几分。那次被 Cloud9 逆转的决赛，成了 NiKo 整个职业生涯中最难以释怀的起点。那时的他，一定对自己说了那句：Maybe not today。</p>
+        <p>可夜晚一转身，又梦到聚光灯。</p>
       </div>
     </div>
 
@@ -283,27 +278,19 @@
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2021 · Stockholm</span>
-        <h3>三楼沙鹰，宿命的子弹</h3>
+        <h3>毫厘之殇</h3>
         <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
-        <p>Nuke 三楼的那三枪，几乎是 CS 历史上最著名的“如果”。面对 NaVi 的决赛，那一发没能击中的沙鹰子弹，让 NiKo 第二次倒在了 Major 决赛的地板上。</p>
-        <div class="img-grid">
-          <img src="images/Niko-2021-1.PNG" alt="2021 赛场">
-          <img src="images/Niko-2021-2.JPG" alt="2021 赛后">
-        </div>
+        <p>命里八尺，但求一丈。</p>
       </div>
     </div>
 
-    <!-- 2023 - 2024 漫长攀爬 -->
+    <!-- 2022 - 2025 曲折求索 -->
     <div class="timeline-item">
       <div class="timeline-card">
-        <span class="year">2023 - 2024 · 漫长攀爬</span>
-        <h3>低谷、坚持与上海落泪</h3>
-        <img src="images/Niko-2023-1.PNG" alt="2023 卡托维兹">
-        <p>G2 时期的卡托维兹与科隆双冠，短暂照亮了岁月，但 Major 的魔咒依然存在。2024 上海 Major，半决赛失利后，他独自坐在空荡荡的椅子上，目光久久凝视着那座他追逐了十几年的奖杯。</p>
-        <div class="img-grid">
-          <img src="images/Niko-2023-2.PNG" alt="2023 捧杯">
-          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
-        </div>
+        <span class="year">2022 - 2025 · 曲折求索</span>
+        <h3>亦余心之所善兮，虽九死其犹未悔。</h3>
+        <img src="images/Niko-2023-1.PNG" alt="NiKo 低谷与坚持">
+        <p></p>
       </div>
     </div>
 
@@ -311,22 +298,17 @@
     <div class="timeline-item special-gold">
       <div class="timeline-card">
         <span class="year">2026 · Cologne</span>
-        <h3>第 3067 天，破晓</h3>
-        <p>Falcons 3-0 横扫 FURIA。第 17 次 Major，他终于捧起了那座奖杯。12 年，1 座冠军。所有的等待，在这一刻都有了意义。</p>
-        <div class="img-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <!-- 用户指定：夺冠节点使用 FLC-2 和 FLC-3 -->
-          <img src="images/FLC-2.JPG" alt="Falcons 夺冠瞬间">
-          <img src="images/FLC-3.JPG" alt="NiKo 捧杯">
-        </div>
+        <h3>科隆问鼎</h3>
+        <img src="images/FLC-2.JPG" alt="Falcons 夺冠瞬间">
+        <p>十年饮冰，难凉热血。</p>
       </div>
     </div>
 
   </section>
 
-  <!-- 结尾：Maybe not today -->
+  <!-- 结尾 Outro -->
   <section class="outro">
-    <h2>Maybe not today.<br><span>But tomorrow.</span></h2>
-    <p>“我就是永不放弃的最好例子。永远不要放弃你的梦想，这会很艰难，但你会成功的。” —— NiKo</p>
+    <h2>Maybe not today.<br>Maybe not tomorrow.<br>Maybe not next month but <span>one day I’ll be the champion.</span></h2>
     <a href="index.html" class="back-btn">← 返回主页</a>
   </section>
 
