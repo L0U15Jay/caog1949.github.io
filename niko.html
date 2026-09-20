@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero ---------- */
+    /* ---------- 开头 Hero：FLC-1 作背景 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -35,7 +35,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95)), url('images/FLC-1.JPG') center/cover no-repeat;
       padding: 2rem;
     }
 
@@ -70,12 +70,22 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 中间区域：时间轴 + FLC-1 背景 ---------- */
+    /* ---------- 中间区域：时间轴 + Niko1PNG 背景 ---------- */
     .timeline {
       position: relative;
       max-width: 1000px;
       margin: 0 auto;
       padding: 4rem 2rem;
+      background: transparent;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .timeline::before {
@@ -87,7 +97,7 @@
       width: 2px;
       background: linear-gradient(180deg, var(--accent-red), var(--accent-green));
       transform: translateX(-50%);
-      z-index: 0;
+      z-index: 1;
     }
 
     .timeline-item {
@@ -95,7 +105,7 @@
       width: 50%;
       padding: 2rem 3rem;
       box-sizing: border-box;
-      z-index: 1;
+      z-index: 2;
     }
 
     .timeline-item:nth-child(odd) {
@@ -293,14 +303,14 @@
 </head>
 <body>
 
-  <!-- 开头 -->
+  <!-- 开头：FLC-1 作背景 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 时间轴（中间区域背景 FLC-1 将在下方 body 内以伪元素方式实现） -->
+  <!-- 时间轴：Niko1PNG 作背景 -->
   <section class="timeline">
 
     <!-- 2018 波士顿 -->
@@ -348,26 +358,7 @@
 
   </section>
 
-  <!-- 中间区域的 FLC-1 背景：用 absolute 平铺在 timeline 上 -->
-  <style>
-    /* 用 body::before 覆盖整个时间轴区域，FLC-1 作为暗背景 */
-    .timeline {
-      background: transparent;
-    }
-    .timeline::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/FLC-1.JPG') center/cover no-repeat;
-      z-index: -1;
-      pointer-events: none;
-    }
-    /* timeline-item 需保证在背景之上 */
-    .timeline-item { position: relative; z-index: 2; }
-    .timeline::before { z-index: 1; }
-  </style>
-
-  <!-- 结尾：Outro 背景换成 FLC-3.JPG -->
+  <!-- 结尾：FLC-3.JPG 作背景 -->
   <section class="outro">
     <h2>
       <span class="line">Maybe not today.</span>
