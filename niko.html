@@ -70,7 +70,7 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 时间轴 ---------- */
+    /* ---------- 中间区域：时间轴 + FLC-1 背景 ---------- */
     .timeline {
       position: relative;
       max-width: 1000px;
@@ -87,6 +87,7 @@
       width: 2px;
       background: linear-gradient(180deg, var(--accent-red), var(--accent-green));
       transform: translateX(-50%);
+      z-index: 0;
     }
 
     .timeline-item {
@@ -94,6 +95,7 @@
       width: 50%;
       padding: 2rem 3rem;
       box-sizing: border-box;
+      z-index: 1;
     }
 
     .timeline-item:nth-child(odd) {
@@ -115,7 +117,7 @@
       background: var(--bg-dark);
       border: 3px solid var(--accent-green);
       border-radius: 50%;
-      z-index: 1;
+      z-index: 2;
       box-shadow: 0 0 15px var(--accent-green);
     }
 
@@ -176,7 +178,6 @@
       display: block;
     }
 
-    /* 上下全宽多张图 */
     .img-stack {
       display: flex;
       flex-direction: column;
@@ -198,12 +199,12 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro：FLC-2.JPG 作背景 ---------- */
+    /* ---------- 结尾 Outro：FLC-3.JPG 作背景 ---------- */
     .outro {
       position: relative;
       padding: 8rem 2rem;
       text-align: center;
-      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/FLC-2.JPG') center/cover no-repeat;
+      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/FLC-3.JPG') center/cover no-repeat;
       border-top: 1px solid var(--border-color);
     }
 
@@ -299,7 +300,7 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 时间轴 -->
+  <!-- 时间轴（中间区域背景 FLC-1 将在下方 body 内以伪元素方式实现） -->
   <section class="timeline">
 
     <!-- 2018 波士顿 -->
@@ -347,7 +348,26 @@
 
   </section>
 
-  <!-- 结尾：Outro 背景换成 FLC-2.JPG -->
+  <!-- 中间区域的 FLC-1 背景：用 absolute 平铺在 timeline 上 -->
+  <style>
+    /* 用 body::before 覆盖整个时间轴区域，FLC-1 作为暗背景 */
+    .timeline {
+      background: transparent;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/FLC-1.JPG') center/cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
+    }
+    /* timeline-item 需保证在背景之上 */
+    .timeline-item { position: relative; z-index: 2; }
+    .timeline::before { z-index: 1; }
+  </style>
+
+  <!-- 结尾：Outro 背景换成 FLC-3.JPG -->
   <section class="outro">
     <h2>
       <span class="line">Maybe not today.</span>
