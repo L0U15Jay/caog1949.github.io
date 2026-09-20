@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：FLC-1 作背景 ---------- */
+    /* Hero */
     .hero {
       height: 100vh;
       display: flex;
@@ -72,7 +72,7 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 过渡带：Hero 与下半部分之间的柔和衔接 ---------- */
+    /* 过渡带 */
     .fade-bridge {
       height: 140px;
       width: 100%;
@@ -83,13 +83,13 @@
         rgba(10, 10, 15, 0.3) 70%,
         rgba(10, 10, 15, 0) 100%
       );
-      margin-bottom: -140px;   /* 负边距，让过渡带叠到下半部分之上 */
+      margin-bottom: -140px;
       position: relative;
       z-index: 3;
       pointer-events: none;
     }
 
-    /* ---------- 下半部分：一整片连续背景（时间轴 + 结尾） ---------- */
+    /* 下半部分 */
     .lower-section {
       position: relative;
       width: 100%;
@@ -99,7 +99,7 @@
       z-index: 1;
     }
 
-    /* ---------- 时间轴 ---------- */
+    /* 时间轴 */
     .timeline {
       position: relative;
       max-width: 1000px;
@@ -228,7 +228,7 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro ---------- */
+    /* Outro */
     .outro {
       position: relative;
       max-width: 900px;
@@ -296,7 +296,42 @@
       border-color: var(--accent-green);
     }
 
-    /* ---------- 响应式 ---------- */
+    /* 音乐按钮 */
+    .music-btn {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 12px 25px -10px rgba(37, 99, 235, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 999;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 18px 35px -12px rgba(124, 58, 237, 0.7);
+    }
+
+    .music-btn.playing .music-icon {
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* 响应式 */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
       .timeline::before { left: 20px; }
@@ -315,22 +350,20 @@
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
       .fade-bridge { height: 80px; margin-bottom: -80px; }
+      .music-btn { right: 16px; bottom: 16px; width: 46px; height: 46px; font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 开头：FLC-1 作背景 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 过渡带：让 Hero 和下半部分自然衔接 -->
   <div class="fade-bridge"></div>
 
-  <!-- 下半部分：一整片 Niko1PNG 背景 -->
   <div class="lower-section">
 
     <section class="timeline">
@@ -388,6 +421,37 @@
     </section>
 
   </div>
+
+  <!-- 背景音乐：Here Im.mp3（空格转 %20） -->
+  <audio id="bgm" loop preload="auto">
+    <source src="images/Here%20Im.mp3" type="audio/mpeg">
+    你的浏览器不支持音频播放。
+  </audio>
+  <button id="music-btn" class="music-btn" aria-label="播放背景音乐">
+    <span class="music-icon">♪</span>
+  </button>
+
+  <script>
+    (function () {
+      var audio = document.getElementById('bgm');
+      var btn = document.getElementById('music-btn');
+
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(function () {
+            btn.classList.add('playing');
+            btn.setAttribute('aria-label', '暂停背景音乐');
+          }).catch(function (e) {
+            console.warn('播放失败：', e);
+          });
+        } else {
+          audio.pause();
+          btn.classList.remove('playing');
+          btn.setAttribute('aria-label', '播放背景音乐');
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
