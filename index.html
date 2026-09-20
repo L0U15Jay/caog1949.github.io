@@ -1,11 +1,247 @@
-<! DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <title>我的名片</title>
-  ‹meta charset="utf-8"›
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的名片 · 精致名片</title>
+  <!-- 使用柔和的现代风格，无外部依赖，纯内联样式 -->
+  <style>
+    /* 全局重置与字体 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f9faff 0%, #eef2fa 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+
+    /* 名片卡片容器 —— 毛玻璃质感 + 阴影 + 圆角 */
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 
+        0 30px 50px -20px rgba(0, 20, 40, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+        0 0 0 1px rgba(148, 163, 184, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0 40px 60px -24px rgba(0, 30, 60, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+        0 0 0 1px rgba(148, 163, 184, 0.2);
+    }
+
+    /* 头像 / 首字母缩写装饰 */
+    .avatar {
+      width: 6rem;
+      height: 6rem;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 25px -8px rgba(59, 130, 246, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    /* 名字标题 */
+    .name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0b1e33;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .name span {
+      background: linear-gradient(120deg, #2563eb, #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    /* 职业头衔 */
+    .title {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2d3c52;
+      background: rgba(59, 130, 246, 0.08);
+      padding: 0.35rem 1.2rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    /* 分隔线 */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), transparent);
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+
+    /* 简介描述 */
+    .bio {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 2rem;
+      padding: 0 0.5rem;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .bio i {
+      font-style: normal;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+    }
+
+    /* 联系方式组 */
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: #1e293b;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.55rem 1.4rem;
+      border-radius: 48px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    .contact-item:hover {
+      background: white;
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 8px 18px -8px rgba(37, 99, 235, 0.25);
+      transform: scale(1.02);
+      color: #2563eb;
+    }
+
+    /* 简单的图标 (emoji 或字符) 保持轻量化 */
+    .contact-item .icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* 让卡片在移动端更舒适 */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 2rem;
+      }
+
+      .avatar {
+        width: 5rem;
+        height: 5rem;
+        font-size: 2.2rem;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+
+      .title {
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+      }
+
+      .bio {
+        font-size: 0.95rem;
+      }
+
+      .contact-list {
+        gap: 0.9rem;
+      }
+
+      .contact-item {
+        padding: 0.45rem 1.1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* 小点缀：悬停时头像微微发光 */
+    .card:hover .avatar {
+      box-shadow: 0 20px 30px -10px rgba(124, 58, 237, 0.4);
+      transform: scale(1.02);
+    }
+  </style>
 </head>
 <body>
-  <h1>你好，我是 你的名字</h1>
+  <div class="card">
+    <!-- 用名字首字母或自定义字符作头像装饰，这里使用“名”的拼音首字母 M (代表 My) 也可以改为你的名字首字 -->
+    <div class="avatar" aria-hidden="true">✨</div>
 
+    <!-- 标题: 你好，我是 你的名字 —— 替换为真实姓名，视觉突出 -->
+    <h1 class="name">
+      <span>你好，我是</span> 你的名字
+    </h1>
+
+    <!-- 职业或标签, 可根据需要修改或删除 -->
+    <div class="title">💼 创意开发者 · 设计师</div>
+
+    <!-- 简短介绍 / 个性签名，可根据需要调整 -->
+    <p class="bio">
+      ✦ 热爱构建优雅、实用的数字产品 ✦ <br>
+      ✦ 相信简洁是终极的复杂 ✦
+    </p>
+
+    <!-- 用一条纤细的分隔线增加层次 -->
+    <div class="divider"></div>
+
+    <!-- 联系方式：可点击的 email / 社交账号，均使用占位示例，请替换 -->
+    <div class="contact-list">
+      <a href="mailto:hello@example.com" class="contact-item">
+        <span class="icon">📧</span> hello@example.com
+      </a>
+      <a href="#" class="contact-item" onclick="alert('可以替换成你的 GitHub 链接'); return false;">
+        <span class="icon">🐙</span> github.com/yourname
+      </a>
+      <!-- 如有需要可继续添加，但保持简洁 -->
+    </div>
+  </div>
 </body>
 </html>
