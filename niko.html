@@ -176,18 +176,6 @@
       display: block;
     }
 
-    /* 图片网格：2021 三张用 */
-    .img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .img-grid .full-width {
-      grid-column: 1 / -1;
-    }
-
     /* 上下全宽多张图 */
     .img-stack {
       display: flex;
@@ -275,8 +263,6 @@
         right: auto !important;
       }
       .outro h2 { font-size: 1.4rem; }
-      .img-grid { grid-template-columns: 1fr; }
-      .img-grid .full-width { grid-column: auto; }
     }
   </style>
 </head>
@@ -302,21 +288,17 @@
       </div>
     </div>
 
-    <!-- 2021 斯德哥尔摩 -->
+    <!-- 2021 斯德哥尔摩：只引用 Deagle -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2021 · Stockholm</span>
         <h3>毫厘之殇</h3>
-        <div class="img-grid">
-          <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面" class="full-width">
-          <img src="images/Niko-2021-1.PNG" alt="2021 赛场">
-          <img src="images/Niko-2021-2.JPG" alt="2021 赛后">
-        </div>
+        <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
         <p>命里八尺，但求一丈。</p>
       </div>
     </div>
 
-    <!-- 2022 - 2025 曲折求索：三张上下全宽，首尾互换 -->
+    <!-- 2022 - 2025 曲折求索 -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2022 - 2025 · 曲折求索</span>
