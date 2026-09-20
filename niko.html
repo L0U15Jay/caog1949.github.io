@@ -176,7 +176,7 @@
       display: block;
     }
 
-    /* 图片网格：用于 2021 三张 / 2023-2024 两张 */
+    /* 图片网格：2021 三张用 */
     .img-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -184,9 +184,38 @@
       margin-bottom: 1rem;
     }
 
-    /* 让 2021 的第一张大图占满整行 */
     .img-grid .full-width {
       grid-column: 1 / -1;
+    }
+
+    /* 错落式图片：2022-2025 两张用 */
+    .img-stagger {
+      position: relative;
+      margin-bottom: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .img-stagger .main-img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.8rem;
+      border: 1px solid var(--border-color);
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .img-stagger .side-img {
+      position: absolute;
+      right: 1rem;
+      bottom: 0;
+      width: 45%;
+      height: auto;
+      border-radius: 0.8rem;
+      border: 2px solid var(--bg-card);
+      box-shadow: 0 12px 25px -8px rgba(0,0,0,0.6);
+      z-index: 2;
+      display: block;
     }
 
     .timeline-item.special-red .timeline-card { border-left: 4px solid var(--accent-red); }
@@ -208,7 +237,7 @@
       font-weight: 900;
       color: #ffffff;
       letter-spacing: -0.03em;
-      line-height: 1.4;
+      line-height: 1.5;
       margin-bottom: 1.5rem;
       max-width: 900px;
       margin-left: auto;
@@ -224,13 +253,6 @@
       background: linear-gradient(135deg, var(--accent-green), #27ae60);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .outro p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 2rem;
     }
 
     .back-btn {
@@ -269,12 +291,20 @@
       .outro h2 { font-size: 1.4rem; }
       .img-grid { grid-template-columns: 1fr; }
       .img-grid .full-width { grid-column: auto; }
+      .img-stagger .side-img {
+        position: static;
+        width: 100%;
+        margin-top: 0.6rem;
+        border: 1px solid var(--border-color);
+        box-shadow: none;
+      }
+      .img-stagger { padding-bottom: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 开头：Maybe not today -->
+  <!-- 开头 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
@@ -294,13 +324,12 @@
       </div>
     </div>
 
-    <!-- 2021 斯德哥尔摩：三张图全部引用 -->
+    <!-- 2021 斯德哥尔摩 -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2021 · Stockholm</span>
         <h3>毫厘之殇</h3>
         <div class="img-grid">
-          <!-- 大图放最上面，占满整行 -->
           <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面" class="full-width">
           <img src="images/Niko-2021-1.PNG" alt="2021 赛场">
           <img src="images/Niko-2021-2.JPG" alt="2021 赛后">
@@ -309,16 +338,15 @@
       </div>
     </div>
 
-    <!-- 2022 - 2025 曲折求索：每年一张图（2023、2024） -->
+    <!-- 2022 - 2025 曲折求索：错落式两张图 -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2022 - 2025 · 曲折求索</span>
-        <h3>亦余心之所善兮，虽九死其犹未悔。</h3>
-        <div class="img-grid">
-          <img src="images/Niko-2023-1.PNG" alt="2023 坚持">
-          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
+        <h3>九死不悔</h3>
+        <div class="img-stagger">
+          <img src="images/Niko-2024.JPG" alt="2024 上海落泪" class="main-img">
+          <img src="images/Niko-2023-1.PNG" alt="2023 坚持" class="side-img">
         </div>
-        <p></p>
       </div>
     </div>
 
@@ -334,13 +362,13 @@
 
   </section>
 
-  <!-- 结尾 Outro -->
+  <!-- 结尾 -->
   <section class="outro">
     <h2>
       <span class="line">Maybe not today.</span>
       <span class="line">Maybe not tomorrow.</span>
-      <span class="line">Maybe not next month</span>
-      <span class="line green">but one day I’ll be the champion.</span>
+      <span class="line">Maybe not next month.</span>
+      <span class="line green">But one day I’ll be the champion.</span>
     </h2>
     <a href="index.html" class="back-btn">← 返回主页</a>
   </section>
