@@ -19,14 +19,17 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: var(--bg-dark);
+      /* 全局背景：Niko1PNG.PNG + 深色遮罩，保证文字可读 */
+      background:
+        linear-gradient(rgba(10, 10, 15, 0.82), rgba(10, 10, 15, 0.88)),
+        url('images/Niko1PNG.PNG') center/cover no-repeat fixed;
       color: var(--text-main);
       font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：纯色背景，无图片 ---------- */
+    /* ---------- 开头 Hero：透明，直接露全局背景 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -35,7 +38,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      background: #0a0a0f;   /* 纯深色底，无图 */
+      background: transparent;
       padding: 2rem;
     }
 
@@ -70,15 +73,15 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* 过渡带 */
+    /* 过渡带：保留柔和过渡，无背景图 */
     .fade-bridge {
       height: 140px;
       width: 100%;
       background: linear-gradient(
         180deg,
-        rgba(10, 10, 15, 0.75) 0%,
-        rgba(10, 10, 15, 0.55) 40%,
-        rgba(10, 10, 15, 0.3) 70%,
+        rgba(10, 10, 15, 0.6) 0%,
+        rgba(10, 10, 15, 0.4) 40%,
+        rgba(10, 10, 15, 0.2) 70%,
         rgba(10, 10, 15, 0) 100%
       );
       margin-bottom: -140px;
@@ -87,11 +90,11 @@
       pointer-events: none;
     }
 
-    /* 下半部分 */
+    /* 下半部分：透明，让全局背景透出来 */
     .lower-section {
       position: relative;
       width: 100%;
-      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      background: transparent;
       padding-top: 4rem;
       padding-bottom: 6rem;
       z-index: 1;
@@ -354,7 +357,6 @@
 </head>
 <body>
 
-  <!-- 开头：无背景图，纯深色 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
@@ -421,7 +423,7 @@
 
   </div>
 
-  <!-- 背景音乐：Here Im.mp3（空格转 %20） -->
+  <!-- 背景音乐：Here Im.mp3 -->
   <audio id="bgm" loop preload="auto">
     <source src="images/Here%20Im.mp3" type="audio/mpeg">
     你的浏览器不支持音频播放。
