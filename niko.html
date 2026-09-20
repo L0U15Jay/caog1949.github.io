@@ -188,33 +188,19 @@
       grid-column: 1 / -1;
     }
 
-    /* 错落式图片：2022-2025 两张用 */
-    .img-stagger {
-      position: relative;
+    /* 上下全宽两张图：2022-2025 用 */
+    .img-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
       margin-bottom: 1rem;
-      padding-bottom: 2rem;
     }
 
-    .img-stagger .main-img {
+    .img-stack img {
       width: 100%;
       height: auto;
       border-radius: 0.8rem;
       border: 1px solid var(--border-color);
-      display: block;
-      position: relative;
-      z-index: 1;
-    }
-
-    .img-stagger .side-img {
-      position: absolute;
-      right: 1rem;
-      bottom: 0;
-      width: 45%;
-      height: auto;
-      border-radius: 0.8rem;
-      border: 2px solid var(--bg-card);
-      box-shadow: 0 12px 25px -8px rgba(0,0,0,0.6);
-      z-index: 2;
       display: block;
     }
 
@@ -291,14 +277,6 @@
       .outro h2 { font-size: 1.4rem; }
       .img-grid { grid-template-columns: 1fr; }
       .img-grid .full-width { grid-column: auto; }
-      .img-stagger .side-img {
-        position: static;
-        width: 100%;
-        margin-top: 0.6rem;
-        border: 1px solid var(--border-color);
-        box-shadow: none;
-      }
-      .img-stagger { padding-bottom: 0; }
     }
   </style>
 </head>
@@ -338,14 +316,14 @@
       </div>
     </div>
 
-    <!-- 2022 - 2025 曲折求索：错落式两张图 -->
+    <!-- 2022 - 2025 曲折求索：上下全宽两张图 -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2022 - 2025 · 曲折求索</span>
         <h3>九死不悔</h3>
-        <div class="img-stagger">
-          <img src="images/Niko-2024.JPG" alt="2024 上海落泪" class="main-img">
-          <img src="images/Niko-2023-1.PNG" alt="2023 坚持" class="side-img">
+        <div class="img-stack">
+          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
+          <img src="images/Niko-2023-1.PNG" alt="2023 坚持">
         </div>
       </div>
     </div>
