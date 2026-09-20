@@ -35,7 +35,9 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95)), url('images/FLC-1.JPG') center/cover no-repeat;
+      background:
+        linear-gradient(rgba(10, 10, 15, 0.55), rgba(10, 10, 15, 0.75)),
+        url('images/FLC-1.JPG') center/cover no-repeat;
       padding: 2rem;
     }
 
@@ -70,12 +72,31 @@
       60% { transform: translateY(-7px); }
     }
 
+    /* ---------- 过渡带：Hero 与下半部分之间的柔和衔接 ---------- */
+    .fade-bridge {
+      height: 140px;
+      width: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 10, 15, 0.75) 0%,
+        rgba(10, 10, 15, 0.55) 40%,
+        rgba(10, 10, 15, 0.3) 70%,
+        rgba(10, 10, 15, 0) 100%
+      );
+      margin-bottom: -140px;   /* 负边距，让过渡带叠到下半部分之上 */
+      position: relative;
+      z-index: 3;
+      pointer-events: none;
+    }
+
     /* ---------- 下半部分：一整片连续背景（时间轴 + 结尾） ---------- */
     .lower-section {
       position: relative;
       width: 100%;
       background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      padding-top: 4rem;
       padding-bottom: 6rem;
+      z-index: 1;
     }
 
     /* ---------- 时间轴 ---------- */
@@ -207,7 +228,7 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro：不再单独设背景，直接叠在下半部分上 ---------- */
+    /* ---------- 结尾 Outro ---------- */
     .outro {
       position: relative;
       max-width: 900px;
@@ -293,6 +314,7 @@
       .outro { padding: 4rem 1.5rem 1rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
+      .fade-bridge { height: 80px; margin-bottom: -80px; }
     }
   </style>
 </head>
@@ -305,10 +327,12 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 下半部分：一整片 Niko1PNG 背景，包含时间轴 + 结尾 -->
+  <!-- 过渡带：让 Hero 和下半部分自然衔接 -->
+  <div class="fade-bridge"></div>
+
+  <!-- 下半部分：一整片 Niko1PNG 背景 -->
   <div class="lower-section">
 
-    <!-- 时间轴 -->
     <section class="timeline">
 
       <div class="timeline-item special-red">
@@ -352,7 +376,6 @@
 
     </section>
 
-    <!-- 结尾：直接叠在同一片背景上 -->
     <section class="outro">
       <h2>
         <span class="line">Maybe not today.</span>
