@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- Hero：FLC-3 作背景，只保留捧杯部分 ---------- */
+    /* ---------- Hero：FLC-3 作背景 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -72,17 +72,19 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 下半部分：Niko1PNG 背景 ---------- */
+    /* ---------- 下半部分：Niko1PNG 背景，整体压暗 ---------- */
     .lower-section {
       position: relative;
       width: 100%;
-      background: url('images/Niko1PNG.PNG') center/cover no-repeat;
+      background:
+        linear-gradient(rgba(10, 10, 15, 0.78), rgba(10, 10, 15, 0.9)),
+        url('images/Niko1PNG.PNG') center/cover no-repeat;
       padding-top: 2rem;
       padding-bottom: 6rem;
       z-index: 1;
     }
 
-    /* 顶部渐入：从深色渐出到透明，衔接 Hero 底部 */
+    /* 顶部渐入：和 Hero 底部衔接 */
     .lower-section::before {
       content: '';
       position: absolute;
@@ -93,8 +95,7 @@
       background: linear-gradient(
         180deg,
         rgba(5, 5, 8, 0.95) 0%,
-        rgba(5, 5, 8, 0.75) 35%,
-        rgba(10, 10, 15, 0.4) 70%,
+        rgba(5, 5, 8, 0.7) 40%,
         rgba(10, 10, 15, 0) 100%
       );
       z-index: 1;
