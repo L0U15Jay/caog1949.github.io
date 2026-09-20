@@ -77,7 +77,6 @@
       background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/Niko1PNG.PNG') center/cover no-repeat;
     }
 
-    /* 内层：真正的内容宽度限制 */
     .timeline {
       position: relative;
       max-width: 1000px;
@@ -85,7 +84,6 @@
       padding: 4rem 2rem;
     }
 
-    /* 中轴线 */
     .timeline::before {
       content: '';
       position: absolute;
@@ -207,12 +205,12 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro：FLC-3.JPG 作背景 ---------- */
+    /* ---------- 结尾 Outro：统一用 Niko1PNG 作背景 ---------- */
     .outro {
       position: relative;
       padding: 8rem 2rem;
       text-align: center;
-      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/FLC-3.JPG') center/cover no-repeat;
+      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
       border-top: 1px solid var(--border-color);
     }
 
@@ -308,13 +306,10 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 中间区域外层：铺满全屏的背景 -->
+  <!-- 中间区域：Niko1PNG 作背景 -->
   <div class="timeline-wrap">
-
-    <!-- 时间轴内容 -->
     <section class="timeline">
 
-      <!-- 2018 波士顿 -->
       <div class="timeline-item special-red">
         <div class="timeline-card">
           <span class="year">2018 · Boston</span>
@@ -324,7 +319,6 @@
         </div>
       </div>
 
-      <!-- 2021 斯德哥尔摩 -->
       <div class="timeline-item">
         <div class="timeline-card">
           <span class="year">2021 · Stockholm</span>
@@ -334,7 +328,6 @@
         </div>
       </div>
 
-      <!-- 2022 - 2025 曲折求索 -->
       <div class="timeline-item">
         <div class="timeline-card">
           <span class="year">2022 - 2025 · 曲折求索</span>
@@ -347,7 +340,6 @@
         </div>
       </div>
 
-      <!-- 2026 科隆夺冠 -->
       <div class="timeline-item special-gold">
         <div class="timeline-card">
           <span class="year">2026 · Cologne</span>
@@ -360,7 +352,7 @@
     </section>
   </div>
 
-  <!-- 结尾：FLC-3.JPG 作背景 -->
+  <!-- 结尾：也统一用 Niko1PNG 作背景 -->
   <section class="outro">
     <h2>
       <span class="line">Maybe not today.</span>
