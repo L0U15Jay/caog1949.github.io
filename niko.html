@@ -173,6 +173,20 @@
       margin-bottom: 1rem;
       object-fit: cover;
       border: 1px solid var(--border-color);
+      display: block;
+    }
+
+    /* 图片网格：用于 2021 三张 / 2023-2024 两张 */
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 让 2021 的第一张大图占满整行 */
+    .img-grid .full-width {
+      grid-column: 1 / -1;
     }
 
     .timeline-item.special-red .timeline-card { border-left: 4px solid var(--accent-red); }
@@ -190,7 +204,7 @@
     }
 
     .outro h2 {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: -0.03em;
@@ -201,7 +215,11 @@
       margin-right: auto;
     }
 
-    .outro h2 span {
+    .outro h2 .line {
+      display: block;
+    }
+
+    .outro h2 .green {
       color: var(--accent-green);
       background: linear-gradient(135deg, var(--accent-green), #27ae60);
       -webkit-background-clip: text;
@@ -248,7 +266,9 @@
         left: 12px !important;
         right: auto !important;
       }
-      .outro h2 { font-size: 1.5rem; }
+      .outro h2 { font-size: 1.4rem; }
+      .img-grid { grid-template-columns: 1fr; }
+      .img-grid .full-width { grid-column: auto; }
     }
   </style>
 </head>
@@ -274,22 +294,30 @@
       </div>
     </div>
 
-    <!-- 2021 斯德哥尔摩 -->
+    <!-- 2021 斯德哥尔摩：三张图全部引用 -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2021 · Stockholm</span>
         <h3>毫厘之殇</h3>
-        <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
+        <div class="img-grid">
+          <!-- 大图放最上面，占满整行 -->
+          <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面" class="full-width">
+          <img src="images/Niko-2021-1.PNG" alt="2021 赛场">
+          <img src="images/Niko-2021-2.JPG" alt="2021 赛后">
+        </div>
         <p>命里八尺，但求一丈。</p>
       </div>
     </div>
 
-    <!-- 2022 - 2025 曲折求索 -->
+    <!-- 2022 - 2025 曲折求索：每年一张图（2023、2024） -->
     <div class="timeline-item">
       <div class="timeline-card">
         <span class="year">2022 - 2025 · 曲折求索</span>
         <h3>亦余心之所善兮，虽九死其犹未悔。</h3>
-        <img src="images/Niko-2023-1.PNG" alt="NiKo 低谷与坚持">
+        <div class="img-grid">
+          <img src="images/Niko-2023-1.PNG" alt="2023 坚持">
+          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
+        </div>
         <p></p>
       </div>
     </div>
@@ -308,7 +336,12 @@
 
   <!-- 结尾 Outro -->
   <section class="outro">
-    <h2>Maybe not today.<br>Maybe not tomorrow.<br>Maybe not next month but <span>one day I’ll be the champion.</span></h2>
+    <h2>
+      <span class="line">Maybe not today.</span>
+      <span class="line">Maybe not tomorrow.</span>
+      <span class="line">Maybe not next month</span>
+      <span class="line green">but one day I’ll be the champion.</span>
+    </h2>
     <a href="index.html" class="back-btn">← 返回主页</a>
   </section>
 
