@@ -58,6 +58,44 @@
       letter-spacing: 2px;
     }
 
+    /* ---------- 音乐提示小字 ---------- */
+    .music-hint {
+      margin-top: 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;   /* 拉开字距，像铭牌 */
+      text-transform: uppercase;
+
+      /* 半透明渐变填充 */
+      background: linear-gradient(120deg, #7ee7c2 0%, #d4af37 50%, #7ee7c2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+
+      /* 轻微描边 + 光晕，保证可读但不夺目 */
+      -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.18);
+      text-shadow: 0 0 14px rgba(126, 231, 194, 0.18);
+
+      opacity: 0.85;
+      animation: hintFade 3.6s ease-in-out infinite;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    @keyframes hintFade {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 0.95; }
+    }
+
+    /* 消失状态：淡出 + 轻微上移，之后永久隐藏 */
+    .music-hint.hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      animation: none;
+      visibility: hidden;   /* 永不出现 */
+    }
+
     .scroll-down {
       position: absolute;
       bottom: 40px;
@@ -84,7 +122,6 @@
       z-index: 1;
     }
 
-    /* 顶部渐入：和 Hero 底部衔接 */
     .lower-section::before {
       content: '';
       position: absolute;
@@ -102,7 +139,6 @@
       pointer-events: none;
     }
 
-    /* 时间轴 */
     .timeline {
       position: relative;
       max-width: 1000px;
@@ -131,15 +167,8 @@
       z-index: 2;
     }
 
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-      text-align: left;
-    }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 50%; text-align: left; }
 
     .timeline-item::after {
       content: '';
@@ -154,13 +183,8 @@
       box-shadow: 0 0 15px var(--accent-green);
     }
 
-    .timeline-item:nth-child(odd)::after {
-      right: -8px;
-    }
-
-    .timeline-item:nth-child(even)::after {
-      left: -8px;
-    }
+    .timeline-item:nth-child(odd)::after { right: -8px; }
+    .timeline-item:nth-child(even)::after { left: -8px; }
 
     .timeline-card {
       background: var(--bg-card);
@@ -232,7 +256,6 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* Outro */
     .outro {
       position: relative;
       max-width: 900px;
@@ -254,9 +277,7 @@
       z-index: 1;
     }
 
-    .outro h2 .line {
-      display: block;
-    }
+    .outro h2 .line { display: block; }
 
     .outro h2 .green {
       color: var(--accent-green);
@@ -327,18 +348,17 @@
       box-shadow: 0 18px 35px -12px rgba(124, 58, 237, 0.7);
     }
 
-    .music-btn.playing .music-icon {
-      animation: spin 2s linear infinite;
-    }
+    .music-btn.playing .music-icon { animation: spin 2s linear infinite; }
 
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
-    /* 响应式 */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+      .music-hint { font-size: 0.7rem; letter-spacing: 0.25em; }
       .lower-section::before { height: 200px; }
       .timeline::before { left: 20px; }
       .timeline-item {
@@ -348,10 +368,7 @@
         padding-left: 50px;
         padding-right: 0;
       }
-      .timeline-item::after {
-        left: 12px !important;
-        right: auto !important;
-      }
+      .timeline-item::after { left: 12px !important; right: auto !important; }
       .outro { padding: 4rem 1.5rem 1rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
@@ -364,6 +381,12 @@
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
+
+    <!-- 音乐提示小字：点击音乐按钮后永久消失 -->
+    <div id="music-hint" class="music-hint">
+      Turn on the music — for the ultimate experience.
+    </div>
+
     <div class="scroll-down">↓</div>
   </section>
 
@@ -437,8 +460,16 @@
     (function () {
       var audio = document.getElementById('bgm');
       var btn = document.getElementById('music-btn');
+      var hint = document.getElementById('music-hint');
+      var hintDismissed = false;   // 用变量确保「永不出现」
 
       btn.addEventListener('click', function () {
+        // 第一次点击时，让提示小字淡出并永久隐藏
+        if (!hintDismissed && hint) {
+          hint.classList.add('hidden');
+          hintDismissed = true;
+        }
+
         if (audio.paused) {
           audio.play().then(function () {
             btn.classList.add('playing');
