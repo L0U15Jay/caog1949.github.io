@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：纯色背景，无图片 ---------- */
+    /* ---------- 开头 Hero：黑金色渐变 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -35,7 +35,9 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      background: #0a0a0f;   /* 纯深色底，无图 */
+      background:
+        radial-gradient(ellipse at 50% 100%, #1a1408 0%, #0a0a0f 45%, #050505 100%),
+        linear-gradient(180deg, #0a0a0f 0%, #1a1408 100%);
       padding: 2rem;
     }
 
@@ -70,15 +72,15 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* 过渡带 */
+    /* 过渡带：黑金渐变底部，衔接到下面的 Niko1PNG */
     .fade-bridge {
       height: 140px;
       width: 100%;
       background: linear-gradient(
         180deg,
-        rgba(10, 10, 15, 0.75) 0%,
-        rgba(10, 10, 15, 0.55) 40%,
-        rgba(10, 10, 15, 0.3) 70%,
+        #050505 0%,
+        rgba(10, 10, 15, 0.85) 40%,
+        rgba(10, 10, 15, 0.5) 70%,
         rgba(10, 10, 15, 0) 100%
       );
       margin-bottom: -140px;
@@ -87,7 +89,7 @@
       pointer-events: none;
     }
 
-    /* 下半部分 */
+    /* 下半部分：保持 Niko1PNG 背景（不动） */
     .lower-section {
       position: relative;
       width: 100%;
@@ -354,7 +356,7 @@
 </head>
 <body>
 
-  <!-- 开头：无背景图，纯深色 -->
+  <!-- 开头：黑金渐变 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
@@ -363,6 +365,7 @@
 
   <div class="fade-bridge"></div>
 
+  <!-- 下半部分：Niko1PNG 背景（保持不变） -->
   <div class="lower-section">
 
     <section class="timeline">
@@ -421,7 +424,7 @@
 
   </div>
 
-  <!-- 背景音乐：Here Im.mp3（空格转 %20） -->
+  <!-- 背景音乐 -->
   <audio id="bgm" loop preload="auto">
     <source src="images/Here%20Im.mp3" type="audio/mpeg">
     你的浏览器不支持音频播放。
