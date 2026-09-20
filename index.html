@@ -9,9 +9,8 @@
 
     body {
       min-height: 100vh;
-      /* 背景图：Betty-1.PNG，定位到 center 65% 保住人物和玫瑰 */
       background:
-        linear-gradient(rgba(240, 244, 254, 0.45), rgba(230, 236, 249, 0.6)),
+        linear-gradient(rgba(240, 244, 254, 0.25), rgba(230, 236, 249, 0.35)),
         url('images/Betty-1.PNG') center 65% / cover no-repeat fixed;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
       display: flex;
@@ -25,24 +24,23 @@
     .card {
       max-width: 820px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      /* 更透明 + 无虚化 */
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 2.2rem;
       padding: 2.8rem 2.6rem;
       box-shadow:
         0 30px 55px -22px rgba(0, 25, 55, 0.25),
-        0 0 0 1px rgba(255, 255, 255, 0.7) inset,
-        0 0 0 1px rgba(148, 163, 184, 0.12);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.45);
       box-shadow:
         0 40px 65px -26px rgba(0, 30, 60, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.85) inset,
-        0 0 0 1px rgba(148, 163, 184, 0.18);
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
     }
 
     .header {
@@ -84,12 +82,14 @@
       color: #0b1e33;
       line-height: 1.25;
       margin-bottom: 0.35rem;
+      /* 文字加浅光晕，保证透明背景上清晰 */
+      text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85), 0 0 4px rgba(255, 255, 255, 0.9);
     }
 
     .name .en {
       font-size: 1.4rem;
       font-weight: 500;
-      color: #4a5b73;
+      color: #2d3f57;
       letter-spacing: 0.02em;
       margin-left: 0.4rem;
     }
@@ -98,11 +98,11 @@
       display: inline-block;
       font-size: 0.95rem;
       font-weight: 500;
-      color: #2563eb;
-      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      background: rgba(255, 255, 255, 0.7);
       padding: 0.3rem 1.1rem;
       border-radius: 40px;
-      border: 1px solid rgba(37, 99, 235, 0.18);
+      border: 1px solid rgba(37, 99, 235, 0.25);
       letter-spacing: 0.2px;
     }
 
@@ -111,7 +111,7 @@
       flex-wrap: wrap;
       gap: 0.8rem 1.6rem;
       padding: 1.2rem 0 1.6rem;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.55);
       margin-bottom: 2rem;
     }
 
@@ -120,13 +120,14 @@
       align-items: center;
       gap: 0.55rem;
       font-size: 0.98rem;
-      color: #1e293b;
+      color: #0f172a;
       text-decoration: none;
       transition: color 0.2s ease;
-      font-weight: 450;
+      font-weight: 500;
+      text-shadow: 0 1px 8px rgba(255, 255, 255, 0.85);
     }
 
-    .contact-item .icon { font-size: 1.1rem; line-height: 1; opacity: 0.85; }
+    .contact-item .icon { font-size: 1.1rem; line-height: 1; opacity: 0.9; }
     .contact-item:hover { color: #2563eb; }
 
     .action-section {
@@ -185,11 +186,12 @@
     .footer {
       margin-top: 2rem;
       padding-top: 1.2rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
       font-size: 0.82rem;
-      color: #64748b;
+      color: #334155;
       text-align: center;
       letter-spacing: 0.3px;
+      text-shadow: 0 1px 8px rgba(255, 255, 255, 0.85);
     }
 
     @media (max-width: 600px) {
