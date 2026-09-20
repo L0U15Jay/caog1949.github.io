@@ -70,24 +70,22 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 中间区域：时间轴 + Niko1PNG 背景 ---------- */
+    /* ---------- 中间区域外层：铺满全屏 + Niko1PNG 背景 ---------- */
+    .timeline-wrap {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+    }
+
+    /* 内层：真正的内容宽度限制 */
     .timeline {
       position: relative;
       max-width: 1000px;
       margin: 0 auto;
       padding: 4rem 2rem;
-      background: transparent;
     }
 
-    .timeline::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/Niko1PNG.PNG') center/cover no-repeat;
-      z-index: -1;
-      pointer-events: none;
-    }
-
+    /* 中轴线 */
     .timeline::before {
       content: '';
       position: absolute;
@@ -310,53 +308,57 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 时间轴：Niko1PNG 作背景 -->
-  <section class="timeline">
+  <!-- 中间区域外层：铺满全屏的背景 -->
+  <div class="timeline-wrap">
 
-    <!-- 2018 波士顿 -->
-    <div class="timeline-item special-red">
-      <div class="timeline-card">
-        <span class="year">2018 · Boston</span>
-        <h3>三箱梦魇</h3>
-        <img src="images/Niko-2018-1.JPG" alt="2018 Boston Major">
-        <p>可夜晚一转身，又梦到聚光灯。</p>
-      </div>
-    </div>
+    <!-- 时间轴内容 -->
+    <section class="timeline">
 
-    <!-- 2021 斯德哥尔摩 -->
-    <div class="timeline-item">
-      <div class="timeline-card">
-        <span class="year">2021 · Stockholm</span>
-        <h3>毫厘之殇</h3>
-        <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
-        <p>命里八尺，但求一丈。</p>
-      </div>
-    </div>
-
-    <!-- 2022 - 2025 曲折求索 -->
-    <div class="timeline-item">
-      <div class="timeline-card">
-        <span class="year">2022 - 2025 · 曲折求索</span>
-        <h3>九死不悔</h3>
-        <div class="img-stack">
-          <img src="images/Niko-2023-1.PNG" alt="2023 坚持">
-          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
-          <img src="images/Niko-2025-1.JPG" alt="2025">
+      <!-- 2018 波士顿 -->
+      <div class="timeline-item special-red">
+        <div class="timeline-card">
+          <span class="year">2018 · Boston</span>
+          <h3>三箱梦魇</h3>
+          <img src="images/Niko-2018-1.JPG" alt="2018 Boston Major">
+          <p>可夜晚一转身，又梦到聚光灯。</p>
         </div>
       </div>
-    </div>
 
-    <!-- 2026 科隆夺冠 -->
-    <div class="timeline-item special-gold">
-      <div class="timeline-card">
-        <span class="year">2026 · Cologne</span>
-        <h3>科隆问鼎</h3>
-        <img src="images/FLC-2.JPG" alt="Falcons 夺冠瞬间">
-        <p>十年饮冰，难凉热血。</p>
+      <!-- 2021 斯德哥尔摩 -->
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <span class="year">2021 · Stockholm</span>
+          <h3>毫厘之殇</h3>
+          <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
+          <p>命里八尺，但求一丈。</p>
+        </div>
       </div>
-    </div>
 
-  </section>
+      <!-- 2022 - 2025 曲折求索 -->
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <span class="year">2022 - 2025 · 曲折求索</span>
+          <h3>九死不悔</h3>
+          <div class="img-stack">
+            <img src="images/Niko-2023-1.PNG" alt="2023 坚持">
+            <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
+            <img src="images/Niko-2025-1.JPG" alt="2025">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2026 科隆夺冠 -->
+      <div class="timeline-item special-gold">
+        <div class="timeline-card">
+          <span class="year">2026 · Cologne</span>
+          <h3>科隆问鼎</h3>
+          <img src="images/FLC-2.JPG" alt="Falcons 夺冠瞬间">
+          <p>十年饮冰，难凉热血。</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
 
   <!-- 结尾：FLC-3.JPG 作背景 -->
   <section class="outro">
