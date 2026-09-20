@@ -198,11 +198,12 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro ---------- */
+    /* ---------- 结尾 Outro：FLC-2.JPG 作背景 ---------- */
     .outro {
-      padding: 6rem 2rem;
+      position: relative;
+      padding: 8rem 2rem;
       text-align: center;
-      background: linear-gradient(180deg, var(--bg-dark) 0%, #050508 100%);
+      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/FLC-2.JPG') center/cover no-repeat;
       border-top: 1px solid var(--border-color);
     }
 
@@ -216,6 +217,9 @@
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.75);
+      position: relative;
+      z-index: 1;
     }
 
     .outro h2 .line {
@@ -229,7 +233,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Made by 署名 */
     .made-by {
       margin-top: 2.5rem;
       font-size: 1.05rem;
@@ -241,18 +244,23 @@
       -webkit-text-fill-color: transparent;
       color: #8b5cf6;
       display: block;
+      position: relative;
+      z-index: 1;
     }
 
     .back-btn {
       display: inline-block;
       padding: 0.8rem 2rem;
-      border: 1px solid var(--border-color);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 50px;
       color: var(--text-main);
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s ease;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+      position: relative;
+      z-index: 1;
     }
 
     .back-btn:hover {
@@ -276,6 +284,7 @@
         left: 12px !important;
         right: auto !important;
       }
+      .outro { padding: 5rem 1.5rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
     }
@@ -338,7 +347,7 @@
 
   </section>
 
-  <!-- 结尾 -->
+  <!-- 结尾：Outro 背景换成 FLC-2.JPG -->
   <section class="outro">
     <h2>
       <span class="line">Maybe not today.</span>
