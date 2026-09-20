@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>易尚彤 | Louis · 个人名片</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       min-height: 100vh;
@@ -77,10 +73,7 @@
       box-shadow: 0 20px 32px -10px rgba(99, 102, 241, 0.45);
     }
 
-    .name-block {
-      flex: 1;
-      min-width: 180px;
-    }
+    .name-block { flex: 1; min-width: 180px; }
 
     .name {
       font-size: 2.1rem;
@@ -132,15 +125,8 @@
       font-weight: 450;
     }
 
-    .contact-item .icon {
-      font-size: 1.1rem;
-      line-height: 1;
-      opacity: 0.85;
-    }
-
-    .contact-item:hover {
-      color: #2563eb;
-    }
+    .contact-item .icon { font-size: 1.1rem; line-height: 1; opacity: 0.85; }
+    .contact-item:hover { color: #2563eb; }
 
     /* ---------- 按钮区 ---------- */
     .action-section {
@@ -149,7 +135,6 @@
       gap: 1rem;
     }
 
-    /* 渐变紫按钮：下载 PDF */
     .btn-pdf {
       display: flex;
       align-items: center;
@@ -172,7 +157,6 @@
       filter: brightness(1.05);
     }
 
-    /* 深色按钮：进入 NiKo 页 */
     .btn-niko {
       display: flex;
       align-items: center;
@@ -196,9 +180,7 @@
     }
 
     .btn-pdf .icon,
-    .btn-niko .icon {
-      font-size: 1.25rem;
-    }
+    .btn-niko .icon { font-size: 1.25rem; }
 
     /* ---------- 页脚 ---------- */
     .footer {
@@ -211,43 +193,19 @@
       letter-spacing: 0.3px;
     }
 
-    /* ---------- 响应式 ---------- */
     @media (max-width: 600px) {
-      .card {
-        padding: 2rem 1.4rem;
-        border-radius: 1.8rem;
-      }
-
-      .header {
-        gap: 1.2rem;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .avatar {
-        width: 4.4rem;
-        height: 4.4rem;
-      }
-
-      .name {
-        font-size: 1.7rem;
-      }
-
-      .name .en {
-        font-size: 1.15rem;
-      }
-
-      .contact-row {
-        flex-direction: column;
-        gap: 0.6rem;
-      }
+      .card { padding: 2rem 1.4rem; border-radius: 1.8rem; }
+      .header { gap: 1.2rem; flex-direction: column; align-items: flex-start; }
+      .avatar { width: 4.4rem; height: 4.4rem; }
+      .name { font-size: 1.7rem; }
+      .name .en { font-size: 1.15rem; }
+      .contact-row { flex-direction: column; gap: 0.6rem; }
     }
   </style>
 </head>
 <body>
   <div class="card">
 
-    <!-- 头部：头像 + 姓名 + 身份 -->
     <div class="header">
       <div class="avatar">
         <img src="images/FLC-1.JPG" alt="易尚彤">
@@ -260,7 +218,6 @@
       </div>
     </div>
 
-    <!-- 联系方式 -->
     <div class="contact-row">
       <a href="tel:+8618677161438" class="contact-item">
         <span class="icon">📞</span> +86 186-7716-1438
@@ -270,17 +227,16 @@
       </a>
     </div>
 
-    <!-- 按钮区：PDF 下载 + NiKo 页面入口 -->
     <div class="action-section">
       <a href="LouisJay.pdf" class="btn-pdf" download>
         <span class="icon">📄</span> 下载简历（PDF）
       </a>
+      <!-- 按钮文字已改 -->
       <a href="niko.html" class="btn-niko">
-        <span class="icon">🎮</span> 致敬 NiKo · 进入专区
+        <span class="icon">🪑</span> 真拿你没办法，坐好喽
       </a>
     </div>
 
-    <!-- 页脚 -->
     <div class="footer">
       易尚彤 · Louis &nbsp;|&nbsp; 金融科技 · 数据分析 · 技术交叉应用
     </div>
