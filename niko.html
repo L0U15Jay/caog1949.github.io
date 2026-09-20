@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：黑金色渐变 ---------- */
+    /* ---------- 开头 Hero：黑金渐变，底部收在黑金色 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -35,9 +35,13 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      background:
-        radial-gradient(ellipse at 50% 100%, #1a1408 0%, #0a0a0f 45%, #050505 100%),
-        linear-gradient(180deg, #0a0a0f 0%, #1a1408 100%);
+      background: linear-gradient(
+        180deg,
+        #050505 0%,
+        #0a0a0f 40%,
+        #100c07 75%,
+        #0d0a06 100%
+      );
       padding: 2rem;
     }
 
@@ -72,28 +76,29 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* 过渡带：黑金渐变底部，衔接到下面的 Niko1PNG */
+    /* ---------- 过渡带：从 Hero 底部色 → lower-section 遮罩色 ---------- */
     .fade-bridge {
-      height: 140px;
+      height: 220px;
       width: 100%;
+      /* 起点和 Hero 底部 #0d0a06 一致，终点接近 lower-section 的遮罩色 */
       background: linear-gradient(
         180deg,
-        #050505 0%,
-        rgba(10, 10, 15, 0.85) 40%,
-        rgba(10, 10, 15, 0.5) 70%,
-        rgba(10, 10, 15, 0) 100%
+        #0d0a06 0%,
+        rgba(13, 11, 8, 0.85) 35%,
+        rgba(10, 10, 15, 0.7) 65%,
+        rgba(10, 10, 15, 0.55) 100%
       );
-      margin-bottom: -140px;
+      margin-bottom: -220px;   /* 叠到下半部分顶部 */
       position: relative;
       z-index: 3;
       pointer-events: none;
     }
 
-    /* 下半部分：保持 Niko1PNG 背景（不动） */
+    /* 下半部分：保持 Niko1PNG 背景 */
     .lower-section {
       position: relative;
       width: 100%;
-      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      background: linear-gradient(rgba(10,10,15,0.55), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
       padding-top: 4rem;
       padding-bottom: 6rem;
       z-index: 1;
@@ -349,14 +354,13 @@
       .outro { padding: 4rem 1.5rem 1rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
-      .fade-bridge { height: 80px; margin-bottom: -80px; }
+      .fade-bridge { height: 120px; margin-bottom: -120px; }
       .music-btn { right: 16px; bottom: 16px; width: 46px; height: 46px; font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 开头：黑金渐变 -->
   <section class="hero">
     <h1>Maybe not today.</h1>
     <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
@@ -365,7 +369,6 @@
 
   <div class="fade-bridge"></div>
 
-  <!-- 下半部分：Niko1PNG 背景（保持不变） -->
   <div class="lower-section">
 
     <section class="timeline">
@@ -424,7 +427,6 @@
 
   </div>
 
-  <!-- 背景音乐 -->
   <audio id="bgm" loop preload="auto">
     <source src="images/Here%20Im.mp3" type="audio/mpeg">
     你的浏览器不支持音频播放。
