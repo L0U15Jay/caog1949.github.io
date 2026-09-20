@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For NiKo · Maybe Not Today</title>
+  <style>
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent-green: #2ecc71;
+      --accent-red: #c0392b;
+      --accent-gold: #d4af37;
+      --border-color: #1e293b;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ---------- 开头：Maybe not today ---------- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95)), url('images/Niko1.jpg') center/cover no-repeat;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      letter-spacing: 2px;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      font-size: 2rem;
+      color: var(--accent-green);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-7px); }
+    }
+
+    /* ---------- 时间轴 ---------- */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-red), var(--accent-green));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+
+    /* 时间轴圆点 */
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      width: 16px;
+      height: 16px;
+      background: var(--bg-dark);
+      border: 3px solid var(--accent-green);
+      border-radius: 50%;
+      z-index: 1;
+      box-shadow: 0 0 15px var(--accent-green);
+    }
+
+    .timeline-item:nth-child(odd)::after {
+      right: -8px;
+    }
+
+    .timeline-item:nth-child(even)::after {
+      left: -8px;
+    }
+
+    /* 卡片 */
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 50px -15px rgba(46, 204, 113, 0.15);
+      border-color: rgba(46, 204, 113, 0.3);
+    }
+
+    .year {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .timeline-card h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .timeline-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.8rem;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+
+    .timeline-card .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    /* 特定节点的颜色标记 */
+    .timeline-item.special-red .timeline-card { border-left: 4px solid var(--accent-red); }
+    .timeline-item.special-red::after { border-color: var(--accent-red); box-shadow: 0 0 15px var(--accent-red); }
+    
+    .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
+    .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
+
+    /* ---------- 结尾：Maybe not today, maybe tomorrow ---------- */
+    .outro {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-dark) 0%, #050508 100%);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .outro h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .outro h2 span {
+      color: var(--accent-green);
+      background: linear-gradient(135deg, var(--accent-green), #27ae60);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .outro p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .back-btn:hover {
+      background: var(--accent-green);
+      color: #000;
+      border-color: var(--accent-green);
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .timeline::before { left: 20px; }
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 50px;
+        padding-right: 0;
+      }
+      .timeline-item::after {
+        left: 12px !important;
+        right: auto !important;
+      }
+      .outro h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 开头：Maybe not today -->
+  <section class="hero">
+    <h1>Maybe not today.</h1>
+    <p>THE LONGEST RIVER IN CS &nbsp;·&nbsp; FOR NIKO</p>
+    <div class="scroll-down">↓</div>
+  </section>
+
+  <!-- 时间轴：从 2018 到 2026 -->
+  <section class="timeline">
+
+    <!-- 2018 波士顿 -->
+    <div class="timeline-item special-red">
+      <div class="timeline-card">
+        <span class="year">2018 · Boston</span>
+        <h3>一步之遥的雨夜</h3>
+        <img src="images/Niko-2018-1.JPG" alt="2018 Boston Major">
+        <p>FaZe 在 Inferno 上距离冠军只差几分。那次被 Cloud9 逆转的决赛，成了 NiKo 整个职业生涯中最难以释怀的起点。那时的他，一定对自己说了那句：Maybe not today。</p>
+      </div>
+    </div>
+
+    <!-- 2021 斯德哥尔摩 -->
+    <div class="timeline-item">
+      <div class="timeline-card">
+        <span class="year">2021 · Stockholm</span>
+        <h3>三楼沙鹰，宿命的子弹</h3>
+        <img src="images/Niko-2021-Deagle.JPG" alt="Nuke 三楼沙鹰名场面">
+        <p>Nuke 三楼的那三枪，几乎是 CS 历史上最著名的“如果”。面对 NaVi 的决赛，那一发没能击中的沙鹰子弹，让 NiKo 第二次倒在了 Major 决赛的地板上。</p>
+        <div class="img-grid">
+          <img src="images/Niko-2021-1.PNG" alt="2021 赛场">
+          <img src="images/Niko-2021-2.JPG" alt="2021 赛后">
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 - 2024 漫长攀爬 -->
+    <div class="timeline-item">
+      <div class="timeline-card">
+        <span class="year">2023 - 2024 · 漫长攀爬</span>
+        <h3>低谷、坚持与上海落泪</h3>
+        <img src="images/Niko-2023-1.PNG" alt="2023 卡托维兹">
+        <p>G2 时期的卡托维兹与科隆双冠，短暂照亮了岁月，但 Major 的魔咒依然存在。2024 上海 Major，半决赛失利后，他独自坐在空荡荡的椅子上，目光久久凝视着那座他追逐了十几年的奖杯。</p>
+        <div class="img-grid">
+          <img src="images/Niko-2023-2.PNG" alt="2023 捧杯">
+          <img src="images/Niko-2024.JPG" alt="2024 上海落泪">
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026 科隆夺冠 -->
+    <div class="timeline-item special-gold">
+      <div class="timeline-card">
+        <span class="year">2026 · Cologne</span>
+        <h3>第 3067 天，破晓</h3>
+        <p>Falcons 3-0 横扫 FURIA。第 17 次 Major，他终于捧起了那座奖杯。12 年，1 座冠军。所有的等待，在这一刻都有了意义。</p>
+        <div class="img-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <!-- 用户指定：夺冠节点使用 FLC-2 和 FLC-3 -->
+          <img src="images/FLC-2.JPG" alt="Falcons 夺冠瞬间">
+          <img src="images/FLC-3.JPG" alt="NiKo 捧杯">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 结尾：Maybe not today -->
+  <section class="outro">
+    <h2>Maybe not today.<br><span>But tomorrow.</span></h2>
+    <p>“我就是永不放弃的最好例子。永远不要放弃你的梦想，这会很艰难，但你会成功的。” —— NiKo</p>
+    <a href="index.html" class="back-btn">← 返回主页</a>
+  </section>
+
+</body>
+</html>
