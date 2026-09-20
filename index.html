@@ -142,18 +142,16 @@
       color: #2563eb;
     }
 
-    /* ---------- PDF 下载区域 ---------- */
-    .download-section {
+    /* ---------- 按钮区 ---------- */
+    .action-section {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      padding: 1rem 0 0.5rem;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .download-btn {
-      flex: 1 1 280px;
-      display: inline-flex;
+    /* 渐变紫按钮：下载 PDF */
+    .btn-pdf {
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.7rem;
@@ -168,35 +166,38 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
 
-    .download-btn .icon {
-      font-size: 1.25rem;
-    }
-
-    .download-btn:hover {
+    .btn-pdf:hover {
       transform: translateY(-2px);
       box-shadow: 0 22px 38px -14px rgba(37, 99, 235, 0.65);
       filter: brightness(1.05);
     }
 
-    /* 右侧两张配图 */
-    .side-images {
+    /* 深色按钮：进入 NiKo 页 */
+    .btn-niko {
       display: flex;
-      gap: 0.9rem;
-      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 1rem 1.6rem;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 15px 30px -12px rgba(15, 23, 42, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
 
-    .side-images img {
-      width: 4.5rem;
-      height: 4.5rem;
-      object-fit: cover;
-      border-radius: 1.1rem;
-      box-shadow: 0 10px 20px -8px rgba(30, 41, 59, 0.25);
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      transition: transform 0.2s ease;
+    .btn-niko:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 38px -14px rgba(15, 23, 42, 0.7);
+      filter: brightness(1.1);
     }
 
-    .side-images img:hover {
-      transform: scale(1.06);
+    .btn-pdf .icon,
+    .btn-niko .icon {
+      font-size: 1.25rem;
     }
 
     /* ---------- 页脚 ---------- */
@@ -240,16 +241,6 @@
         flex-direction: column;
         gap: 0.6rem;
       }
-
-      .download-section {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1.2rem;
-      }
-
-      .side-images {
-        justify-content: center;
-      }
     }
   </style>
 </head>
@@ -257,10 +248,7 @@
   <div class="card">
 
     <!-- 头部：头像 + 姓名 + 身份 -->
-  <div class="card">
-    <!-- 头部：头像 + 姓名 + 身份 -->
     <div class="header">
-      <!-- 1. 头像路径修改为 images/FLC-1.JPG -->
       <div class="avatar">
         <img src="images/FLC-1.JPG" alt="易尚彤">
       </div>
@@ -282,46 +270,14 @@
       </a>
     </div>
 
-    <!-- PDF 下载区域（删除了右侧两张配图，并添加了Niko按钮） -->
-    <div class="download-section" style="flex-direction: column; align-items: stretch; gap: 1rem;">
-      <!-- 原PDF下载按钮 -->
-      <a href="LouisJay.pdf" class="download-btn" download style="flex: none;">
+    <!-- 按钮区：PDF 下载 + NiKo 页面入口 -->
+    <div class="action-section">
+      <a href="LouisJay.pdf" class="btn-pdf" download>
         <span class="icon">📄</span> 下载简历（PDF）
       </a>
-      
-      <!-- 3. 新增进入 niko.html 的按钮 -->
-      <a href="niko.html" class="nav-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.7rem; font-size: 1.05rem; font-weight: 600; color: #ffffff; background: linear-gradient(135deg, #1e293b, #0f172a); padding: 1rem 1.6rem; border-radius: 60px; text-decoration: none; box-shadow: 0 15px 30px -12px rgba(15, 23, 42, 0.5); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+      <a href="niko.html" class="btn-niko">
         <span class="icon">🎮</span> 致敬 NiKo · 进入专区
       </a>
-    </div>
-
-    <!-- 页脚 -->
-    <div class="footer">
-      易尚彤 · Louis &nbsp;|&nbsp; 金融科技 · 数据分析 · 技术交叉应用
-    </div>
-  </div>
-
-    <!-- 联系方式 -->
-    <div class="contact-row">
-      <a href="tel:+8618677161438" class="contact-item">
-        <span class="icon">📞</span> +86 186-7716-1438
-      </a>
-      <a href="mailto:ystkaigua@outlook.com" class="contact-item">
-        <span class="icon">📧</span> ystkaigua@outlook.com
-      </a>
-    </div>
-
-    <!-- PDF 下载区域 -->
-    <div class="download-section">
-      <a href="LouisJay.pdf" class="download-btn" download>
-        <span class="icon">📄</span> 下载简历（PDF）
-      </a>
-
-      <!-- 右侧两张配图，不想用就删掉这个 div -->
-      <div class="side-images">
-        <img src="FLC-2.JPG" alt="配图 1">
-        <img src="FLC-3.JPG" alt="配图 2">
-      </div>
     </div>
 
     <!-- 页脚 -->
