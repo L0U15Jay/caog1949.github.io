@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    /* ---------- 开头 Hero：黑金渐变 ---------- */
+    /* ---------- Hero：黑金渐变，底部渐出到透明 ---------- */
     .hero {
       height: 100vh;
       display: flex;
@@ -38,9 +38,10 @@
       background: linear-gradient(
         180deg,
         #050505 0%,
-        #0a0a0f 40%,
-        #100c07 75%,
-        #0d0a06 100%
+        #0a0a0f 35%,
+        #100c07 70%,
+        rgba(16, 12, 7, 0.45) 90%,
+        rgba(16, 12, 7, 0) 100%
       );
       padding: 2rem;
     }
@@ -76,14 +77,33 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 下半部分：Niko1PNG 背景 ---------- */
+    /* ---------- 下半部分：Niko1PNG 背景 + 顶部渐入 ---------- */
     .lower-section {
       position: relative;
       width: 100%;
-      background: linear-gradient(rgba(10,10,15,0.55), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
-      padding-top: 4rem;
+      background: url('images/Niko1PNG.PNG') center/cover no-repeat;
+      padding-top: 2rem;
       padding-bottom: 6rem;
       z-index: 1;
+    }
+
+    /* 顶部渐入：从深色渐出到透明，衔接 Hero 底部 */
+    .lower-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 10, 15, 0.95) 0%,
+        rgba(10, 10, 15, 0.75) 35%,
+        rgba(10, 10, 15, 0.4) 70%,
+        rgba(10, 10, 15, 0) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
     }
 
     /* 时间轴 */
@@ -92,6 +112,7 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 4rem 2rem 2rem;
+      z-index: 2;
     }
 
     .timeline::before {
@@ -222,6 +243,7 @@
       margin: 0 auto;
       padding: 6rem 2rem 2rem;
       text-align: center;
+      z-index: 2;
     }
 
     .outro h2 {
@@ -321,6 +343,7 @@
     /* 响应式 */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
+      .lower-section::before { height: 200px; }
       .timeline::before { left: 20px; }
       .timeline-item {
         width: 100%;
