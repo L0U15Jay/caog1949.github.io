@@ -70,18 +70,20 @@
       60% { transform: translateY(-7px); }
     }
 
-    /* ---------- 中间区域外层：铺满全屏 + Niko1PNG 背景 ---------- */
-    .timeline-wrap {
+    /* ---------- 下半部分：一整片连续背景（时间轴 + 结尾） ---------- */
+    .lower-section {
       position: relative;
       width: 100%;
-      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.9)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      background: linear-gradient(rgba(10,10,15,0.82), rgba(10,10,15,0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
+      padding-bottom: 6rem;
     }
 
+    /* ---------- 时间轴 ---------- */
     .timeline {
       position: relative;
       max-width: 1000px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 4rem 2rem 2rem;
     }
 
     .timeline::before {
@@ -205,13 +207,13 @@
     .timeline-item.special-gold .timeline-card { border-left: 4px solid var(--accent-gold); }
     .timeline-item.special-gold::after { border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); }
 
-    /* ---------- 结尾 Outro：统一用 Niko1PNG 作背景 ---------- */
+    /* ---------- 结尾 Outro：不再单独设背景，直接叠在下半部分上 ---------- */
     .outro {
       position: relative;
-      padding: 8rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem 2rem;
       text-align: center;
-      background: linear-gradient(rgba(5, 5, 8, 0.78), rgba(5, 5, 8, 0.88)), url('images/Niko1PNG.PNG') center/cover no-repeat;
-      border-top: 1px solid var(--border-color);
     }
 
     .outro h2 {
@@ -221,9 +223,6 @@
       letter-spacing: -0.03em;
       line-height: 1.5;
       margin-bottom: 1.5rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
       text-shadow: 0 4px 18px rgba(0,0,0,0.75);
       position: relative;
       z-index: 1;
@@ -291,7 +290,7 @@
         left: 12px !important;
         right: auto !important;
       }
-      .outro { padding: 5rem 1.5rem; }
+      .outro { padding: 4rem 1.5rem 1rem; }
       .outro h2 { font-size: 1.4rem; }
       .made-by { font-size: 0.95rem; }
     }
@@ -306,8 +305,10 @@
     <div class="scroll-down">↓</div>
   </section>
 
-  <!-- 中间区域：Niko1PNG 作背景 -->
-  <div class="timeline-wrap">
+  <!-- 下半部分：一整片 Niko1PNG 背景，包含时间轴 + 结尾 -->
+  <div class="lower-section">
+
+    <!-- 时间轴 -->
     <section class="timeline">
 
       <div class="timeline-item special-red">
@@ -350,19 +351,20 @@
       </div>
 
     </section>
-  </div>
 
-  <!-- 结尾：也统一用 Niko1PNG 作背景 -->
-  <section class="outro">
-    <h2>
-      <span class="line">Maybe not today.</span>
-      <span class="line">Maybe not tomorrow.</span>
-      <span class="line">Maybe not next month.</span>
-      <span class="line green">But one day I’ll be the champion.</span>
-    </h2>
-    <a href="index.html" class="back-btn">← 返回主页</a>
-    <span class="made-by">Made by L0U15J=D</span>
-  </section>
+    <!-- 结尾：直接叠在同一片背景上 -->
+    <section class="outro">
+      <h2>
+        <span class="line">Maybe not today.</span>
+        <span class="line">Maybe not tomorrow.</span>
+        <span class="line">Maybe not next month.</span>
+        <span class="line green">But one day I’ll be the champion.</span>
+      </h2>
+      <a href="index.html" class="back-btn">← 返回主页</a>
+      <span class="made-by">Made by L0U15J=D</span>
+    </section>
+
+  </div>
 
 </body>
 </html>
